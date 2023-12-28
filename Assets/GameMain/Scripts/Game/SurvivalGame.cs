@@ -9,7 +9,7 @@ using GameFramework;
 using GameFramework.DataTable;
 using UnityEngine;
 
-namespace StarForce
+namespace GameMain
 {
     public class SurvivalGame : GameBase
     {
@@ -23,6 +23,16 @@ namespace StarForce
             }
         }
 
+        public override void Initialize()
+        {
+            base.Initialize();
+            GameEntry.Entity.ShowPlayer(new PlayerData(GameEntry.Entity.GenerateSerialId(), 10000)
+            {
+               
+                Position = Vector3.zero,
+            });
+        }
+
         public override void Update(float elapseSeconds, float realElapseSeconds)
         {
             base.Update(elapseSeconds, realElapseSeconds);
@@ -31,13 +41,7 @@ namespace StarForce
             if (m_ElapseSeconds >= 1f)
             {
                 m_ElapseSeconds = 0f;
-                IDataTable<DRAsteroid> dtAsteroid = GameEntry.DataTable.GetDataTable<DRAsteroid>();
-                float randomPositionX = SceneBackground.EnemySpawnBoundary.bounds.min.x + SceneBackground.EnemySpawnBoundary.bounds.size.x * (float)Utility.Random.GetRandomDouble();
-                float randomPositionZ = SceneBackground.EnemySpawnBoundary.bounds.min.z + SceneBackground.EnemySpawnBoundary.bounds.size.z * (float)Utility.Random.GetRandomDouble();
-                GameEntry.Entity.ShowAsteroid(new AsteroidData(GameEntry.Entity.GenerateSerialId(), 60000 + Utility.Random.GetRandom(dtAsteroid.Count))
-                {
-                    Position = new Vector3(randomPositionX, 0f, randomPositionZ),
-                });
+               //可以每隔一秒执行一次事件
             }
         }
     }

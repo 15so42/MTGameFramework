@@ -13,20 +13,20 @@ using UnityEngine;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace StarForce
+namespace GameMain
 {
     public class ProcedurePreload : ProcedureBase
     {
         public static readonly string[] DataTableNames = new string[]
         {
-            "Aircraft",
+            
             "Armor",
-            "Asteroid",
+            
             "Entity",
             "Music",
             "Scene",
             "Sound",
-            "Thruster",
+            
             "UIForm",
             "UISound",
             "Weapon",

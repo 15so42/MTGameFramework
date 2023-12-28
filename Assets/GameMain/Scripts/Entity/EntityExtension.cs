@@ -9,7 +9,7 @@ using GameFramework.DataTable;
 using System;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace GameMain
 {
     public static class EntityExtension
     {
@@ -40,20 +40,7 @@ namespace StarForce
             entityComponent.AttachEntity(entity.Entity, ownerId, parentTransformPath, userData);
         }
 
-        public static void ShowMyAircraft(this EntityComponent entityComponent, MyAircraftData data)
-        {
-            entityComponent.ShowEntity(typeof(MyAircraft), "Aircraft", Constant.AssetPriority.MyAircraftAsset, data);
-        }
-
-        public static void ShowAircraft(this EntityComponent entityComponent, AircraftData data)
-        {
-            entityComponent.ShowEntity(typeof(Aircraft), "Aircraft", Constant.AssetPriority.AircraftAsset, data);
-        }
-
-        public static void ShowThruster(this EntityComponent entityComponent, ThrusterData data)
-        {
-            entityComponent.ShowEntity(typeof(Thruster), "Thruster", Constant.AssetPriority.ThrusterAsset, data);
-        }
+       
 
         public static void ShowWeapon(this EntityComponent entityComponent, WeaponData data)
         {
@@ -70,11 +57,11 @@ namespace StarForce
             entityCompoennt.ShowEntity(typeof(Bullet), "Bullet", Constant.AssetPriority.BulletAsset, data);
         }
 
-        public static void ShowAsteroid(this EntityComponent entityCompoennt, AsteroidData data)
+       
+        public static void ShowPlayer(this EntityComponent entityCompoennt, PlayerData data)
         {
-            entityCompoennt.ShowEntity(typeof(Asteroid), "Asteroid", Constant.AssetPriority.AsteroiAsset, data);
+            entityCompoennt.ShowEntity(typeof(Player), "Bullet", Constant.AssetPriority.BulletAsset, data);
         }
-
         public static void ShowEffect(this EntityComponent entityComponent, EffectData data)
         {
             entityComponent.ShowEntity(typeof(Effect), "Effect", Constant.AssetPriority.EffectAsset, data);
