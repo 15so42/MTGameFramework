@@ -435,12 +435,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!153 &1088040265 stripped
-ConfigurableJoint:
-  m_CorrespondingSourceObject: {fileID: 6402466233140866035, guid: 791d1c7b440368f44805b8fcd445b3df,
-    type: 3}
-  m_PrefabInstance: {fileID: 1140524880}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1140524880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -448,31 +442,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6402466233133821126, guid: 791d1c7b440368f44805b8fcd445b3df,
-        type: 3}
-      propertyPath: hip
-      value: 
-      objectReference: {fileID: 1088040265}
-    - target: {fileID: 6402466233133821126, guid: 791d1c7b440368f44805b8fcd445b3df,
-        type: 3}
-      propertyPath: spine
-      value: 
-      objectReference: {fileID: 1088040265}
-    - target: {fileID: 6402466233133821126, guid: 791d1c7b440368f44805b8fcd445b3df,
-        type: 3}
-      propertyPath: rotateXLimit.x
-      value: -40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402466233133821126, guid: 791d1c7b440368f44805b8fcd445b3df,
-        type: 3}
-      propertyPath: rotateXLimit.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402466233133821126, guid: 791d1c7b440368f44805b8fcd445b3df,
-        type: 3}
-      propertyPath: scrollMultiplier
-      value: 0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 6402466233133821127, guid: 791d1c7b440368f44805b8fcd445b3df,
         type: 3}
       propertyPath: m_Name
@@ -532,51 +501,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402466233140866035, guid: 791d1c7b440368f44805b8fcd445b3df,
-        type: 3}
-      propertyPath: m_AngularXMotion
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402466233140866035, guid: 791d1c7b440368f44805b8fcd445b3df,
-        type: 3}
-      propertyPath: m_AngularYMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402466233140866035, guid: 791d1c7b440368f44805b8fcd445b3df,
-        type: 3}
-      propertyPath: m_AngularZMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402466233140866035, guid: 791d1c7b440368f44805b8fcd445b3df,
-        type: 3}
-      propertyPath: m_LowAngularXLimit.limit
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402466233140866035, guid: 791d1c7b440368f44805b8fcd445b3df,
-        type: 3}
-      propertyPath: m_HighAngularXLimit.limit
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402466233140866035, guid: 791d1c7b440368f44805b8fcd445b3df,
-        type: 3}
-      propertyPath: m_AngularXLimitSpring.damper
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402466233140866035, guid: 791d1c7b440368f44805b8fcd445b3df,
-        type: 3}
-      propertyPath: m_AngularXLimitSpring.spring
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402466233140866035, guid: 791d1c7b440368f44805b8fcd445b3df,
-        type: 3}
-      propertyPath: m_AngularXDrive.positionDamper
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402466233140866035, guid: 791d1c7b440368f44805b8fcd445b3df,
-        type: 3}
-      propertyPath: m_AngularYZDrive.positionDamper
-      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 791d1c7b440368f44805b8fcd445b3df, type: 3}

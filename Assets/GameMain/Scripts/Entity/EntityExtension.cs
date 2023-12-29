@@ -60,7 +60,7 @@ namespace GameMain
        
         public static void ShowPlayer(this EntityComponent entityCompoennt, PlayerData data)
         {
-            entityCompoennt.ShowEntity(typeof(Player), "Bullet", Constant.AssetPriority.BulletAsset, data);
+            entityCompoennt.ShowEntity(typeof(Player), "Player", Constant.AssetPriority.BulletAsset, data);
         }
         public static void ShowEffect(this EntityComponent entityComponent, EffectData data)
         {

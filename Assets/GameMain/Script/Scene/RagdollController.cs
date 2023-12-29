@@ -7,11 +7,11 @@ using UnityEngine.Serialization;
 
 public class RagdollController : MonoBehaviour
 {
-    public Animator animator;
-
-    public float transitionSpeed = 1;
-
-    private static readonly int Speed = Animator.StringToHash("Speed");
+    // public Animator animator;
+    //
+    // public float transitionSpeed = 1;
+    //
+    // private static readonly int Speed = Animator.StringToHash("Speed");
 
     [Header("---右腿---")] 
     public ConfigurableJoint rightLeg;
@@ -52,6 +52,17 @@ public class RagdollController : MonoBehaviour
     private float hipEulerX=-3;
     
     private PlayerInputActions playerInputActions;
+
+
+    [Header("右手臂")] public ConfigurableJoint rightArm;
+    public Vector3 rightArmIdleEuler;
+    public Vector3 rightArmLiftEuler;
+
+    [Header("左手臂")] public ConfigurableJoint leftArm;
+    public Vector3 leftArmIdleEuler;
+    public Vector3 leftArmLiftEuler;
+    
+    
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();
@@ -79,21 +90,29 @@ public class RagdollController : MonoBehaviour
         pressA = false;
     }
 
+    void OnMouseLeftStarted(InputAction.CallbackContext context)
+    {
+        pressMouseLeft = true;
+    }
+
+    void OnMouseLeftCanceled(InputAction.CallbackContext context)
+    {
+        pressMouseLeft = false;
+    }
+    
+    void OnMouseRightStarted(InputAction.CallbackContext context)
+    {
+        pressMouseRight = true;
+    }
+
+    void OnMouseRightCanceled(InputAction.CallbackContext context)
+    {
+        pressMouseRight = false;
+    }
+
     
     
-    // void OnHipRotateByScroll(InputAction.CallbackContext context)
-    // {
-    //     var value = context.ReadValue<Vector2>().y;
-    //     Debug.Log(value);
-    //     hipEulerX += value;
-    // }
-    
-    // void OnHipRotateByAxis(InputAction.CallbackContext context)
-    // {
-    //     var value = context.ReadValue<float>();
-    //     Debug.Log(value);
-    //     hipEulerX += value;
-    // }
+  
     private void OnEnable()
     {
         playerInputActions.Player.RightLeg.started += OnRightLegStarted;
@@ -101,9 +120,12 @@ public class RagdollController : MonoBehaviour
         playerInputActions.Player.LeftLeg.started += OnLeftLegStarted;
         playerInputActions.Player.LeftLeg.canceled += OnLeftLegCanceled;
 
-       // playerInputActions.Player.HipRotateMouse.performed += OnHipRotateByScroll;
-        
-        
+
+        playerInputActions.Player.MouseLeft.started += OnMouseLeftStarted;
+        playerInputActions.Player.MouseLeft.canceled += OnMouseLeftCanceled;
+
+        playerInputActions.Player.MouseRight.started += OnMouseRightStarted;
+        playerInputActions.Player.MouseRight.canceled += OnMouseRightCanceled;
         
         
         playerInputActions.Enable();
@@ -117,8 +139,12 @@ public class RagdollController : MonoBehaviour
         playerInputActions.Player.LeftLeg.started -= OnLeftLegStarted;
         playerInputActions.Player.LeftLeg.canceled -= OnLeftLegCanceled;
 
-        //playerInputActions.Player.HipRotateMouse.performed -= OnHipRotateByScroll;
-       
+        
+        playerInputActions.Player.MouseLeft.started -= OnMouseLeftStarted;
+        playerInputActions.Player.MouseLeft.canceled -= OnMouseLeftCanceled;
+
+        playerInputActions.Player.MouseRight.started -= OnMouseRightStarted;
+        playerInputActions.Player.MouseRight.canceled -= OnMouseRightCanceled;
         
         playerInputActions.Disable();
     }
@@ -126,6 +152,9 @@ public class RagdollController : MonoBehaviour
     private bool pressA;
     private bool pressD;
     private bool running;
+
+    private bool pressMouseLeft;
+    private bool pressMouseRight;
     
     
     private string rightLegTargetEuler;
@@ -139,15 +168,35 @@ public class RagdollController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        running=false;
+        #region 手臂
 
-        // pressD = Input.GetKey(KeyCode.D);
-        // pressA = Input.GetKey(KeyCode.A);
+        if (pressMouseLeft)
+        {
+            leftArm.targetRotation = Quaternion.Euler(leftArmLiftEuler);
+        }
+        else
+        {
+            leftArm.targetRotation = Quaternion.Euler(leftArmIdleEuler);
+        }
         
+        if (pressMouseRight)
+        {
+            rightArm.targetRotation = Quaternion.Euler(rightArmLiftEuler);
+        }
+        else
+        {
+            rightArm.targetRotation = Quaternion.Euler(rightArmIdleEuler);
+        }
+        
+
+        #endregion
+        
+        #region 腰部
         var hipRotateAction = playerInputActions.Player.HipRotate;
         var hipRotateAxisValue = hipRotateAction.ReadValue<Vector2>().y;
         // 获取触发动作的控件
         var control = hipRotateAction.activeControl;
+        
 
         if (control != null)
         {
@@ -166,6 +215,11 @@ public class RagdollController : MonoBehaviour
         hipEulerX = Mathf.Clamp(hipEulerX, rotateXLimit.x, rotateXLimit.y);
         spine.targetRotation=Quaternion.Euler(new Vector3(hipEulerX,0,0));
         
+
+        #endregion
+
+        #region 腿部
+        running=false;
         if (pressD)
         {
             rightLeg.targetRotation = Quaternion.Euler(rightLegRunEuler);
@@ -226,14 +280,9 @@ public class RagdollController : MonoBehaviour
             
         }
         
-        // if(running)
-        //     hip.targetRotation=Quaternion.Euler(hipRunEuler);
-        // else
-        // {
-        //     hip.targetRotation=Quaternion.Euler(hipIdleEuler);
-        // }
+
+        #endregion
         
-       
 
     }
 

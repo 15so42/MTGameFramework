@@ -836,7 +836,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2487492568584365149}
-  m_LocalRotation: {x: -0.01047078, y: 0.0010648548, z: -0.10114939, w: 0.9948156}
+  m_LocalRotation: {x: 0.5972946, y: -0.06070174, z: -0.07803538, w: 0.7959052}
   m_LocalPosition: {x: -4.425508e-17, y: 0.12922285, z: 5.1318054e-17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -844,7 +844,7 @@ Transform:
   - {fileID: 4471337158854045479}
   m_Father: {fileID: 8740475643762069802}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 70.272, y: -34.224, z: -35.649}
 --- !u!54 &6402466233757161979
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -885,11 +885,11 @@ ConfigurableJoint:
   m_ConnectedBody: {fileID: 6402466234381670127}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 0}
+  m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: -0.18760802, y: -0.061895836, z: -0.026882768}
   serializedVersion: 2
-  m_SecondaryAxis: {x: -0.00000004078088, y: -1, z: -0.00000020900201}
+  m_SecondaryAxis: {x: 0, y: -1, z: 0}
   m_XMotion: 0
   m_YMotion: 0
   m_ZMotion: 0
@@ -2044,8 +2044,8 @@ ConfigurableJoint:
     bounciness: 0
     contactDistance: 0
   m_AngularXLimitSpring:
-    spring: 180
-    damper: 50
+    spring: 0
+    damper: 0
   m_LowAngularXLimit:
     limit: 0
     bounciness: 0
@@ -2088,12 +2088,12 @@ ConfigurableJoint:
   m_AngularXDrive:
     serializedVersion: 3
     positionSpring: 180
-    positionDamper: 0
+    positionDamper: 15
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
     positionSpring: 180
-    positionDamper: 0
+    positionDamper: 15
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -2575,8 +2575,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ee410f5adf9124b862d223314c2c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 6402466233965036353}
-  transitionSpeed: 1
   rightLeg: {fileID: 6402466234241470536}
   rightLegIdleEuler: {x: -90, y: 0, z: 0}
   rightLegRunEuler: {x: 75, y: 0, z: 0}
@@ -2592,8 +2590,14 @@ MonoBehaviour:
   leftKneeUpEuler: {x: 90, y: 0, z: 0}
   leftKneeRunEuler: {x: 60, y: 0, z: 0}
   spine: {fileID: 6402466233140866035}
-  rotateXLimit: {x: -75, y: 120}
+  rotateXLimit: {x: -40, y: 100}
   scrollMultiplier: 0.05
+  rightArm: {fileID: 6402466234916357573}
+  rightArmIdleEuler: {x: 0, y: 0, z: 0}
+  rightArmLiftEuler: {x: 0, y: 0, z: 90}
+  leftArm: {fileID: 6402466233757161981}
+  leftArmIdleEuler: {x: 0, y: 0, z: 0}
+  leftArmLiftEuler: {x: 0, y: 0, z: 90}
 --- !u!1 &6402466233136887522
 GameObject:
   m_ObjectHideFlags: 0
@@ -5147,7 +5151,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6540637768845136792}
-  m_LocalRotation: {x: -0.010435484, y: -0.0010612743, z: 0.101149864, w: 0.9948159}
+  m_LocalRotation: {x: 0.59732395, y: 0.060697183, z: 0.07803649, w: 0.79588336}
   m_LocalPosition: {x: -3.913536e-17, y: 0.12922287, z: -8.437695e-17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5155,7 +5159,7 @@ Transform:
   - {fileID: 8883772440698528886}
   m_Father: {fileID: 4244235558253946947}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 70.276, y: 34.229, z: 35.655}
 --- !u!54 &6402466234916357571
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5200,7 +5204,7 @@ ConfigurableJoint:
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0.18760796, y: -0.061863907, z: -0.026882375}
   serializedVersion: 2
-  m_SecondaryAxis: {x: 0.00000006796813, y: -1, z: 0.0000002548805}
+  m_SecondaryAxis: {x: 0, y: -1, z: 0}
   m_XMotion: 0
   m_YMotion: 0
   m_ZMotion: 0

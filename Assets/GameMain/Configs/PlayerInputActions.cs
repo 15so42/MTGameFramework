@@ -53,6 +53,24 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MouseLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""b787fcbd-55b7-4750-8ec4-fc5569863395"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""4b5677eb-ed98-4c2d-b33a-35543b8299de"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -165,6 +183,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""HipRotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dbe8b05b-1d7a-451b-aa22-f65550dde3b1"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d8fea99e-9a2b-4f56-89f2-06dd30e674ef"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -176,6 +216,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_RightLeg = m_Player.FindAction("RightLeg", throwIfNotFound: true);
         m_Player_LeftLeg = m_Player.FindAction("LeftLeg", throwIfNotFound: true);
         m_Player_HipRotate = m_Player.FindAction("HipRotate", throwIfNotFound: true);
+        m_Player_MouseLeft = m_Player.FindAction("MouseLeft", throwIfNotFound: true);
+        m_Player_MouseRight = m_Player.FindAction("MouseRight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -238,6 +280,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_RightLeg;
     private readonly InputAction m_Player_LeftLeg;
     private readonly InputAction m_Player_HipRotate;
+    private readonly InputAction m_Player_MouseLeft;
+    private readonly InputAction m_Player_MouseRight;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -245,6 +289,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @RightLeg => m_Wrapper.m_Player_RightLeg;
         public InputAction @LeftLeg => m_Wrapper.m_Player_LeftLeg;
         public InputAction @HipRotate => m_Wrapper.m_Player_HipRotate;
+        public InputAction @MouseLeft => m_Wrapper.m_Player_MouseLeft;
+        public InputAction @MouseRight => m_Wrapper.m_Player_MouseRight;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -263,6 +309,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @HipRotate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHipRotate;
                 @HipRotate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHipRotate;
                 @HipRotate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHipRotate;
+                @MouseLeft.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseLeft;
+                @MouseLeft.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseLeft;
+                @MouseLeft.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseLeft;
+                @MouseRight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseRight;
+                @MouseRight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseRight;
+                @MouseRight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseRight;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -276,6 +328,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @HipRotate.started += instance.OnHipRotate;
                 @HipRotate.performed += instance.OnHipRotate;
                 @HipRotate.canceled += instance.OnHipRotate;
+                @MouseLeft.started += instance.OnMouseLeft;
+                @MouseLeft.performed += instance.OnMouseLeft;
+                @MouseLeft.canceled += instance.OnMouseLeft;
+                @MouseRight.started += instance.OnMouseRight;
+                @MouseRight.performed += instance.OnMouseRight;
+                @MouseRight.canceled += instance.OnMouseRight;
             }
         }
     }
@@ -285,5 +343,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnRightLeg(InputAction.CallbackContext context);
         void OnLeftLeg(InputAction.CallbackContext context);
         void OnHipRotate(InputAction.CallbackContext context);
+        void OnMouseLeft(InputAction.CallbackContext context);
+        void OnMouseRight(InputAction.CallbackContext context);
     }
 }

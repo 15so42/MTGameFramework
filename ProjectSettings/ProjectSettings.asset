@@ -709,11 +709,11 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: ENABLE_LOG
-    Standalone: ENABLE_LOG
-    WebGL: ENABLE_LOG
-    Windows Store Apps: ENABLE_LOG
-    iPhone: ENABLE_LOG
+    Android: ENABLE_ERROR_AND_ABOVE_LOG
+    Standalone: ENABLE_ERROR_AND_ABOVE_LOG
+    WebGL: ENABLE_ERROR_AND_ABOVE_LOG
+    Windows Store Apps: ENABLE_ERROR_AND_ABOVE_LOG
+    iPhone: ENABLE_ERROR_AND_ABOVE_LOG
   additionalCompilerArguments: {}
   platformArchitecture:
     iOS: 2
